@@ -12,17 +12,19 @@ body {
     display: flex;    
     justify-content: center;
     align-items: center;
+    background: radial-gradient(circle,rgba(255, 255, 255, 1) 0%, rgba(186, 186, 186, 1) 100%);
 }
 
 button {
     padding: 5px 20px;
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    font-weight: bold;
 }
 
-.etch-a-sketch {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 50%;
+.etch-a-sketch {    
+    border-radius: 5px;    
+    width: 70%;
     height: 80%;
     display: flex;
     padding: 20px;    
@@ -52,8 +54,32 @@ button {
     width: 100%;
 }
 
+.color-btn-black {
+    background-color: black;
+    color: white;
+}
+
+.color-btn-rgb {
+    background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+    color: white;
+}
+
+.clear-btn {
+    background-color: red;
+    color: white;    
+}
+
 .grid-container {
-    border: 1px solid black;
-    height: 100%;
     flex: 1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: white;
 }
