@@ -13,6 +13,9 @@ function generateNewGrid() {
         gridSize = prompt("Invalid input. Please enter a number in the range of 1 - 100: ");
     }
 
+    // clear the current grid
+    clearGrid();
+
     // create the grid
     for (let row = 0; row < gridSize; row++) {
         const row = document.createElement("div");
@@ -29,6 +32,13 @@ function generateNewGrid() {
 
     // update the grid size display
     gridSizeDisplay.textContent = `${gridSize} X ${gridSize}`;
+}
+
+// clear the grid
+function clearGrid() {
+    while (grid.firstChild) {
+        grid.firstChild.remove();
+    }
 }
 
 newGridBtn.addEventListener("click", generateNewGrid);
