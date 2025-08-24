@@ -22,6 +22,11 @@ button {
     font-weight: bold;
 }
 
+.selected {
+    border: 8px solid white;
+    
+}
+
 .etch-a-sketch {    
     border-radius: 5px;    
     width: 70%;

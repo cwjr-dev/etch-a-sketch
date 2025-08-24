@@ -3,6 +3,10 @@
 const newGridBtn = document.querySelector(".new-grid-btn");
 const grid = document.querySelector(".grid");
 const gridSizeDisplay = document.querySelector(".grid-size");
+const blackBtn = document.querySelector(".color-btn-black");
+const randomColorBtn = document.querySelector(".color-btn-random");
+const clearBtn = document.querySelector(".clear-btn");
+let colorStyle; // black or random
 
 // generate new grid based on user input
 function generateNewGrid() {
@@ -39,6 +43,29 @@ function clearGrid() {
     while (grid.firstChild) {
         grid.firstChild.remove();
     }
+
+    // reset grid size display to default message
+    gridSizeDisplay.textContent = 'Click "Create a New Grid" to generate a new grid. You can enter the number of squares per side when prompted.';
+}
+
+// add border to the selected button and set color style
+function setColorStyle() {
+    const selectedBtn = this;
+    const unSelectedBtn = selectedBtn.textContent === "Black" ? randomColorBtn : blackBtn;
+
+    // set the border on the selected button
+    if (!selectedBtn.classList.contains("selected")) {
+        selectedBtn.classList.toggle("selected");
+        colorStyle = selectedBtn.textContent;
+    }
+
+    // remove the border from the selected button
+    if (unSelectedBtn.classList.contains("selected")) {
+        unSelectedBtn.classList.toggle("selected");
+    }
 }
 
 newGridBtn.addEventListener("click", generateNewGrid);
+blackBtn.addEventListener("click", setColorStyle);
+randomColorBtn.addEventListener("click", setColorStyle);
+clearBtn.addEventListener("click", clearGrid);
