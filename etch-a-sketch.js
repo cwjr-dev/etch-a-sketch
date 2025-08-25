@@ -65,7 +65,19 @@ function setColorStyle() {
     }
 }
 
+// color the grid square based on the color style (black or random color)
+function colorSquare(event) {
+    const element = event.target;
+
+    if (element.classList[0] === "square") {
+        element.style.backgroundColor = "black";
+    }
+
+    
+}
+
 newGridBtn.addEventListener("click", generateNewGrid);
+grid.addEventListener("mouseover", colorSquare);
 blackBtn.addEventListener("click", setColorStyle);
 randomColorBtn.addEventListener("click", setColorStyle);
 clearBtn.addEventListener("click", clearGrid);

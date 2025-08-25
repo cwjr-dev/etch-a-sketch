@@ -28,9 +28,9 @@ button {
 }
 
 .etch-a-sketch {    
-    border-radius: 5px;    
-    width: 70%;
-    height: 80%;
+    border-radius: 5px;
+    width: 60%;
+    height: 90%;
     display: flex;
     padding: 20px;    
 }
@@ -107,5 +107,5 @@ button {
 
 .square {
     flex: 1;
-    border: 1px solid #cfd8dc;
+    border: 1px solid #e1ebf0;
 }
