@@ -18,7 +18,7 @@ function generateNewGrid() {
     }
 
     // rest the grid to default
-
+    removeGrid();
 
     // create the grid
     for (let row = 0; row < gridSize; row++) {
@@ -50,11 +50,14 @@ function clearGrid() {
             square.style.opacity = 1;
         }
     }
-    
-
-    // reset grid size display to default message
-    gridSizeDisplay.textContent = 'Click "Create a New Grid" to generate a new grid. You can enter the number of squares per side when prompted.';
 }
+
+// removes the grid from display
+function removeGrid() {
+    while (grid.firstChild) {
+        grid.firstChild.remove();
+    }
+} 
 
 // add border to the selected button and set color style
 function setColorStyle() {
