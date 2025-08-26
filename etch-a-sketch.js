@@ -17,8 +17,8 @@ function generateNewGrid() {
         gridSize = prompt("Invalid input. Please enter a number in the range of 1 - 100: ");
     }
 
-    // clear the current grid
-    clearGrid();
+    // rest the grid to default
+
 
     // create the grid
     for (let row = 0; row < gridSize; row++) {
@@ -40,9 +40,17 @@ function generateNewGrid() {
 
 // clear the grid
 function clearGrid() {
-    while (grid.firstChild) {
-        grid.firstChild.remove();
+    const rows = grid.children;
+
+    for (let row of rows) {
+        const squares = row.children;
+
+        for (let square of squares) {
+            square.style.backgroundColor = "";
+            square.style.opacity = 1;
+        }
     }
+    
 
     // reset grid size display to default message
     gridSizeDisplay.textContent = 'Click "Create a New Grid" to generate a new grid. You can enter the number of squares per side when prompted.';
