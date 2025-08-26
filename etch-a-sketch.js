@@ -67,14 +67,48 @@ function setColorStyle() {
 
 // color the grid square based on the color style (black or random color)
 function colorSquare(event) {
+    const BLACK  = "rgb(0 0 0)";
     const element = event.target;
+    const currentColor = colorStyle === "Black" ? BLACK : getRandomColor();
 
     if (element.classList[0] === "square") {
-        element.style.backgroundColor = "black";
-    }
+        
+        
 
-    
+        
+        
+
+
+        
+        
+        
+        
+        
+        // element.style.backgroundColor === "" ? console.log("empty") : console.log("not empty"); 
+        element.style.backgroundColor = BLACK;
+    }    
 }
+/*
+    -- check if a square has color --
+    if the colorStyle is Black
+        if the square is empty (no color) or not the color black, set the color to black and opacity to 0.1
+        if the square is black and its opacity is < 1, increment opacity by 0.1
+
+    if the colorStyle is random color
+        if the square is empty (no color) or not the random color, set the color to the random color and opacity to 0.1
+        if the square is the random color and its opacity is < 1, increment opacity by 0.1
+*/
+
+// return a random rgba color string
+function getRandomColor() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    return `rgb(${red} ${green} ${blue})`;
+}
+
+
 
 newGridBtn.addEventListener("click", generateNewGrid);
 grid.addEventListener("mouseover", colorSquare);
