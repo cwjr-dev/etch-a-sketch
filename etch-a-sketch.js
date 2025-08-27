@@ -6,7 +6,7 @@ const gridSizeDisplay = document.querySelector(".grid-size");
 const blackBtn = document.querySelector(".color-btn-black");
 const randomColorBtn = document.querySelector(".color-btn-random");
 const clearBtn = document.querySelector(".clear-btn");
-let colorMode; // mode that will determine the square's color
+let colorMode = ""; // determines which style (black or random) to color a square
 
 // generate new grid based on user input
 function generateNewGrid() {
@@ -59,20 +59,20 @@ function removeGrid() {
     }
 } 
 
-// add border to the selected button and set color style
+// add highlight to the selected button and set color mode
 function setColorStyle() {
     const selectedBtn = this;
-    const unSelectedBtn = selectedBtn.textContent === "Black" ? randomColorBtn : blackBtn;
+    const nonSelectedBtn = selectedBtn.textContent === "Black" ? randomColorBtn : blackBtn;
+    colorMode = selectedBtn.textContent;
 
-    // set the border on the selected button
-    if (!selectedBtn.classList.contains("selected")) {
-        selectedBtn.classList.toggle("selected");
-        colorMode = selectedBtn.textContent;
+    // add highlight
+    if (!selectedBtn.classList.contains("highlight")) {
+        selectedBtn.classList.toggle("highlight");
     }
 
-    // remove the border from the selected button
-    if (unSelectedBtn.classList.contains("selected")) {
-        unSelectedBtn.classList.toggle("selected");
+    // remove highlight
+    if (nonSelectedBtn.classList.contains("highlight")) {
+        nonSelectedBtn.classList.toggle("highlight");
     }
 }
 
@@ -81,10 +81,11 @@ function colorSquare(event) {
     const BLACK  = "rgb(0, 0, 0)";
     const DEFAULT_OPACITY = 0.1;
     const MAX_OPACITY = 1;
-    const square = event.target;
-    const selectedColor = colorMode === "Black" ? BLACK : getRandomColor();
+    const square = event.target;    
 
-    if (square.classList[0] === "square") {
+    if (square.classList[0] === "square" && colorMode !== "") {
+        const selectedColor = colorMode === "Black" ? BLACK : getRandomColor();
+
         if (square.style.backgroundColor === "") {
             square.style.backgroundColor = selectedColor;
             square.style.opacity = DEFAULT_OPACITY;
@@ -106,6 +107,7 @@ function getRandomColor() {
 
 newGridBtn.addEventListener("click", generateNewGrid);
 grid.addEventListener("mouseover", colorSquare);
+
 blackBtn.addEventListener("click", setColorStyle);
 randomColorBtn.addEventListener("click", setColorStyle);
 clearBtn.addEventListener("click", clearGrid);

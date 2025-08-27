@@ -22,9 +22,8 @@ button {
     font-weight: bold;
 }
 
-.selected {
-    border: 8px solid white;
-    
+.highlight {
+    border: 8px solid white;    
 }
 
 .etch-a-sketch {    
