@@ -14,14 +14,14 @@ function generateNewGrid() {
 
     // validate user input
     while (isNaN(gridSize) || gridSize < 1 || gridSize > 100) {
-        gridSize = prompt("Invalid input. Please enter a number in the range of 1 - 100: ");
+        gridSize = +prompt("Invalid input. Please enter a number in the range of 1 - 100: ");
     }
 
-    // rest the grid to default
+    // reset the grid to default
     removeGrid();
 
     // create the grid
-    for (let row = 0; row < gridSize; row++) {
+    for (let rowIndex = 0; rowIndex < gridSize; rowIndex++) {
         const row = document.createElement("div");
         row.classList.add("row");
 
@@ -83,7 +83,7 @@ function colorSquare(event) {
     const MAX_OPACITY = 1;
     const square = event.target;    
 
-    if (square.classList[0] === "square" && colorMode !== "") {
+    if (square.classList.contains("square") && colorMode !== "") {
         const selectedColor = colorMode === "Black" ? BLACK : getRandomColor();
 
         if (square.style.backgroundColor === "") {
@@ -91,7 +91,7 @@ function colorSquare(event) {
             square.style.opacity = DEFAULT_OPACITY;
         }
         else if (square.style.opacity < MAX_OPACITY) {
-            square.style.opacity = Number(square.style.opacity) + 0.1;
+            square.style.opacity = Math.min(Number(square.style.opacity) + 0.1, MAX_OPACITY);
         }        
     }    
 }
